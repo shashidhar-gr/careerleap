@@ -6,7 +6,7 @@
  * @param {number} n
  * @return {number}
  */
-var fib = function(n) {
+var fib_recursive= function(n) {
     if(n === 0) {
         return 0;
     }
@@ -16,8 +16,28 @@ var fib = function(n) {
     }
 
     if(n > 1) {
-        return fib(n - 1) + fib(n - 2);
+        return fib_recursive(n - 1) + fib_recursive(n - 2);
     }
 };
 
-console.log(fib(17));
+var fib_iterative = function(n) {
+    if(n === 0) {
+        return 0;
+    }
+
+    if(n === 1) {
+        return 1;
+    }
+
+    let x = 0, y = 1, z = 0;
+
+    for(let i = 2; i <= n; i++) {
+        z = x + y;
+        x = y;
+        y = z;
+    }
+
+    return z;
+}
+
+console.log(fib_recursive(9));
