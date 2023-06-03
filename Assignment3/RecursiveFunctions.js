@@ -44,7 +44,48 @@ var reverseArray = function(arr) {
     console.log(reverse(arr, 0, arr.length-1));
 }
 
-reverseArray([1, 2, 3, 4]);
+//reverseArray([1, 2, 3, 4]);
+
+var gcdOfNumbers = function(a, b) {
+    if(b == 0)
+        return a;
+    
+    if(a > b)
+        return gcdOfNumbers(b, a % b);
+    else 
+        return gcdOfNumbers(a, b % a);
+}
+
+//console.log(gcdOfNumbers(12, 15));
+
+var merge = function(arr, left, mid, right) {
+    let i = left, j = mid;
+
+    while(i <= mid-1 && j <= right) {
+        if(arr[i] < arr[j]) {
+            let temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+}
+
+var sort = function(arr, left , right) {
+    console.log("left: "+left+", right: "+right);
+    if(left >= right) {
+        return arr;
+    }
+    let mid = Math.floor(left + (right-1) / 2);
+    sort(arr, left, mid-1);
+    sort(arr, mid, right);
+    merge(arr, left, mid, right);
+}
+
+var mergeSort = function(arr) {
+    console.log(sort(arr, 0, arr.length-1))
+}
+
+console.log(mergeSort([2, 1, 4, 3]));
 
 
 
