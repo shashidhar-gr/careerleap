@@ -1,3 +1,14 @@
+/**
+ * 912. Sort an Array.
+    https://leetcode.com/problems/sort-an-array/
+*/
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+/** Sorting using merge sort.
+*/
+
 var merge = function(arr, start, mid, end) {
     let leftArray = [], rightArray = [], k = 0;
     for(let i = start; i <= mid; i++) {
@@ -38,17 +49,20 @@ var merge = function(arr, start, mid, end) {
     }
 }
 
-var sort = function(arr, start , end) {
+var mergesort = function(arr, start , end) {
     if(start >= end)
         return arr;
     
     let mid = Math.floor((end + start)/2);
-    sort(arr, start, mid);
-    sort(arr, mid+1, end);
+    mergesort(arr, start, mid);
+    mergesort(arr, mid+1, end);
     merge(arr, start, mid, end);
     return arr;
 }
 
-var mergeSort = function(arr) {
-    return sort(arr, 0, arr.length-1);
+var sort = function(arr) {
+    return mergesort(arr, 0, arr.length-1);
 }
+
+const sortedarr = sort([2, 1, 0. -1, 2, 9, 0, 9]);
+console.log(sortedarr);
