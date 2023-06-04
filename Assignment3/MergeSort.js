@@ -64,5 +64,4 @@ var sort = function(arr) {
     return mergesort(arr, 0, arr.length-1);
 }
 
-const sortedarr = sort([2, 1, 0. -1, 2, 9, 0, 9]);
-console.log(sortedarr);
+module.exports = sort;

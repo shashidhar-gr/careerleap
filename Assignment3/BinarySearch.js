@@ -35,6 +35,4 @@ var binarySearch = function(nums, target, left, right) {
     return -1;
 };
 
-let nums = [-1,0,3,5,9,12];
-let target = 2;
-console.log(search(nums, target));
+module.exports = search;
