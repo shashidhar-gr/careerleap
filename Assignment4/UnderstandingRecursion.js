@@ -34,4 +34,50 @@ var convertToBinary = function(num) {
     return convertToBinary(Math.floor(num/2)) + "" + rem; 
 }
 
-console.log(convertToBinary(233));
+var sumOfNaturalNumbers = function(n) {
+    if(n <= 1) {
+        return 1;
+    }
+
+    return n + sumOfNaturalNumbers(n-1);
+}
+
+var binarySearch = function(arr, start, end, target) {
+    if(arr.length == 0) {
+        return -1;
+    }
+
+    if(arr.length == 1) {
+        if(arr[0] == target) {
+            return 0;
+        }
+        else {
+            return -1;
+        }
+    }
+
+    if(start > end) {
+        return -1;
+    }
+
+    let mid = Math.floor((start + end) / 2);
+
+    if(arr[mid] == target) {
+        return mid;
+    }
+
+    if(arr[mid] > target) {
+        return binarySearch(arr, left, mid-1, target);
+    }
+    else {
+        return binarySearch(arr, mid+1, end, target);
+    }
+}
+
+var search = function(arr, target) {
+    return binarySearch(arr, 0, arr.length-1, target);
+}
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let target = 100;
+console.log(search(arr, target));
