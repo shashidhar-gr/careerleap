@@ -1,7 +1,3 @@
-/**
- * 53. Maximum subaaray.
-    https://leetcode.com/problems/maximum-subarray/
-*/
 class MaxSum {
     sum = 0;
     start = -1;
@@ -63,7 +59,7 @@ var findMaxSum = function(arr, start, end) {
 }
 
 var maxSumSubarray = function(arr) {
-     return findMaxSum(arr, 0, arr.length-1);
+    return findMaxSum(arr, 0, arr.length-1);
 }
 
 const arr = [-2,1,-3,4,-1,2,1,-5,4];
