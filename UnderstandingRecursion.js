@@ -78,6 +78,14 @@ var search = function(arr, target) {
     return binarySearch(arr, 0, arr.length-1, target);
 }
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let target = 100;
-console.log(search(arr, target));
+var fibonaccinumber = function(n) {
+    if(n == 0) {
+        return 0;
+    }
+    if(n == 1) {
+        return 1;
+    }
+
+    return fibonaccinumber(n-1) + fibonaccinumber(n-2);
+}
+console.log(fibonaccinumber(5));
