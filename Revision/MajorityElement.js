@@ -6,7 +6,7 @@
  */
 
 var majorityElement = function(nums) {
-    let max = divide(nums, 0, nums.length-1);
+    let max = divide(arr, 0, arr.length-1);
     return max;
 }
 
@@ -18,17 +18,17 @@ var divide = function(arr, start, end) {
 
         let mid = Math.floor((start + end) / 2);
 
-        let leftMajorityElement = divide(arr, start, mid);
-        let rightMajorityElement = divide(arr, mid + 1, end);
+        let leftMajority = divide(arr, start, mid);
+        let rightMajority = divide(arr, mid + 1, end);
 
-        if(leftMajorityElement == rightMajorityElement) {
-            return leftMajorityElement;
+        if(leftMajority == rightMajority) {
+            return leftMajority;
         }
 
-        let leftMajorityCount = countFrequency(arr, leftMajorityElement, start, end);
-        let rightMajorityCount = countFrequency(arr, rightMajorityElement, start, end);
+        let leftMajorityCount = countFrequency(arr, leftMajority, start, end);
+        let rightMajorityCount = countFrequency(arr, rightMajority, start, end);
 
-        return leftMajorityCount > rightMajorityCount ? leftMajorityElement: rightMajorityElement;
+        return leftMajorityCount > rightMajorityCount ? leftMajority: rightMajority;
     }
 }
 
@@ -66,5 +66,6 @@ var countFrequency = function(arr, element, start, end) {
     return majorityNum;
 }; */
 
-const arr = [2,2,1,1,1,2,2];
+//const arr = [2, 2, 2, 4, 4, 4, 4, 5, 5];
+const arr = [2, 2, 2, 4, 4, 4, 4, 5, 5];
 console.log(majorityElement(arr));
