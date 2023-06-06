@@ -1,39 +1,63 @@
 /**
+ * 33. Search in Rotated Sorted Array.
+ * https://leetcode.com/problems/search-in-rotated-sorted-array/description/
  * @param {number[]} nums
  * @param {number} target
  * @return {number}
  */
 var search = function(nums, target) {
-    let index = binarySearch(nums, target, 0, nums.length-1);
+    let valleyIndex = findValleyIndex(nums, 0, nums.length-1);
+    let start = 0, end = 0;
+    if(nums[valleyIndex] == target) {
+        return valleyIndex;
+    }
+    if(target >= nums[0] && target <= nums[valleyIndex-1]) {
+        start = 0;
+        end = valleyIndex-1;
+    }
+    else {
+        start = valleyIndex;
+        end = nums.length-1;
+    }
+    let index = binarySearch(nums, target, start, end);
     return index;
 };
 
-var binarySearch = function(nums, target, start, end) {
-    
-    if(start >= end) {
-        if(target == nums[start]) {
+var findValleyIndex = function(arr, start, end) {
+    while(start <= end) {
+        if(start == end) {
             return start;
         }
-        else {
-            return -1;
+        let mid = Math.floor(start + (end - start) / 2);
+        if(arr[mid] >= arr[0]) {
+            start = mid + 1;
+        }
+        else if(arr[mid] < arr[0]) {
+            end = mid;
         }
     }
-    
-    let mid = Math.floor((start + end) / 2);
+} 
 
-    if(target == nums[mid]) {
-        return mid;
-    }
-    else if(target > nums[start] && target < nums[mid]) {
-        return binarySearch(nums, target, start, mid);
-    }
-    else {
-        return binarySearch(nums, target, mid + 1, end);
+var binarySearch = function(arr, target, start, end) {
+    
+    while(start <= end) {
+        let mid = Math.floor(start + (end - start) / 2);
+
+        if(target == arr[mid]) {
+            return mid;
+        }
+
+        if(target < arr[mid]) {
+            end = mid - 1;
+        }
+        else {
+            start = mid + 1;
+        }
     }
 
     return -1;
 }
 
-const arr = [5,1,2,3,4];
-const target = 1;
+const arr = [2];
+const target = 2;
 console.log(search(arr, target));
