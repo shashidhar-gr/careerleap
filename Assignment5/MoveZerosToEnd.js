@@ -8,10 +8,6 @@
 var moveZeroes = function(nums) {
     let reader = 0, writer = 0;
 
-    while(nums[writer] != 0 && writer < nums.length) {
-        writer++;
-    }
-
     for(reader = writer; reader < nums.length; reader++) {
         if(nums[reader] != 0) {
             let temp = nums[writer];
@@ -44,5 +40,5 @@ var moveZeroes = function(nums) {
     return nums;
 }; */
 
-const arr = [1];
+const arr = [0, 1, 0, 3, 12];
 console.log(moveZeroes(arr));
