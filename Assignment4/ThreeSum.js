@@ -4,47 +4,41 @@
 */
 
 const sort = require('../Assignment3/MergeSort');
-const search = require('../Assignment3/BinarySearch');
-
+//TC: O(N^2)
 var threeSum = function(arr, target) {
     let finalres = [];
     arr = sort(arr);
     for(let i = 0; i < arr.length; i++) {
-        let res = [];
-        res = twoSum(arr, target-arr[i]);
-        if(res.length != 0) {
-            res.forEach((pair) => {
-                if(pair[0] != i && pair[1] != i) {
-                    pair.push(arr[i]);
-                    finalres.push(pair);
+        
+        //Skipping duplicates.
+        if(i > 0 && arr[i] == arr[i-1]) {
+            continue;
+        }
+        let left = i + 1, right = arr.length-1;        
+        while(left < right) { //Skipping duplicates.
+            let threeSum = arr[i] + arr[left] + arr[right];
+            if(threeSum == target) {
+                let res = [];
+                res.push(arr[i], arr[left], arr[right]);
+                finalres.push(res);
+                left++;
+                while(arr[left] == arr[left-1] && left < right) {
+                    left++;
                 }
-            });
+            }
+            else if(threeSum > target){
+                right--;
+            } 
+            else {
+                left++;
+            }
         }
-    }
 
+    }
     return finalres;
 }
 
-var twoSum = function(arr, target) {
-    let finalres = [];
-    for(let i = 0; i < arr.length; i++) {
-        let res = [];
-        let searchIndex = search(arr, target-arr[i]);
-        if(searchIndex != -1 && searchIndex != i) {
-            res.push(i, searchIndex);
-            finalres.push(res);
-        }
-    }
-
-    return finalres;
-}
-
-class pair {
-    index = -1;
-    value = 0;
-}
-
-const arr = [-1, 0, 1, 2, -1, -4];
+const arr = [-1,0,1,2,-1,-4];
 const target = 0;
 const res = threeSum(arr, target);
 console.log(res);
