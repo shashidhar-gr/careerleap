@@ -1,5 +1,17 @@
-// Brute force method using HashMap.
-var findDuplicate = function(nums) {   
+/**
+ * 287. Find the Duplicate Number
+ * https://leetcode.com/problems/find-the-duplicate-number/description/
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findDuplicate = function(nums) {
+    
+}
+
+/**
+    Using extra space.
+*/
+/*var findDuplicate = function(nums) {
     let hashMap = new Map();
 
     for(let i = 0; i < nums.length; i++) {
@@ -8,7 +20,4 @@ var findDuplicate = function(nums) {
         }
         hashMap.set(nums[i], 1);
     }
-} 
-
-const arr = [3,1,3,4,2];
-console.log(findDuplicate(arr));
+}; */
