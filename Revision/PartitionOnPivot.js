@@ -12,6 +12,6 @@ var partition = function(nums) {
     return nums;
 }
 
-//const nums = [5, 3, 7, 14, 4, 19, 4, 11];
-const nums = [5, 3, 7, 4, 14, 19, 4, 11];
+const nums = [5, 3, 7, 14, 4, 19, 4, 11];
+//const nums = [5, 3, 7, 4, 14, 19, 4, 11];
 console.log(partition(nums));
