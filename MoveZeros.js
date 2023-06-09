@@ -1,3 +1,0 @@
-var moveZeros = function(arr) {
-
-}
