@@ -5,7 +5,20 @@
  * @return {number}
  */
 var findDuplicate = function(nums) {
-    
+    let ledger = new Array(nums.length);
+    if(Object.seal) {
+        ledger.fill(undefined);
+        Object.seal(ledger);
+    }
+
+    for(let i = 0; i < nums.length; i++) {
+        if(ledger[nums[i]] == true) {
+            return nums[i];
+        }
+        else {
+            ledger[nums[i]] = true;
+        }
+    }
 }
 
 /**
@@ -21,3 +34,6 @@ var findDuplicate = function(nums) {
         hashMap.set(nums[i], 1);
     }
 }; */
+
+const nums = [3,3,4,2,1];
+console.log(findDuplicate(nums));
