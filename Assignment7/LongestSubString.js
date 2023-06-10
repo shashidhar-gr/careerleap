@@ -8,27 +8,22 @@ var lengthOfLongestSubstring = function(s) {
     if(s.length == 0)
         return "";
     
-    let window = new Map(), maxLen = Number.MIN_SAFE_INTEGER, res = [];
-    let left = 0, notValidWindow = false;
-
+    let charSet = new Set(), maxLen = Number.MIN_SAFE_INTEGER, res = [];
+    
+    let left = 0;
     for(let right = 0; right < s.length; right++) {
         let c = s[right];
-        window.set(c, window.get(c) == undefined ? 1: window.get(c) + 1);
-        let cCount = window.get(c);
         
-        if(cCount >= 2) {
-            notValidWindow = true;
-        }
-
-        while(notValidWindow) {
+        if(charSet.has(c)) {
             while(s[left] != c) {
-                window.set(s[left], window.get(s[left] - 1));
+                charSet.delete(s[left]);
                 left++;
             }
-            window.set(s[left], window.get(s[left]) - 1);
+            charSet.delete(s[left]);
             left++;
-            notValidWindow = false;
         }
+        
+        charSet.add(c);
 
         if((right - left + 1) > maxLen) {
             maxLen = (right - left + 1);
@@ -40,4 +35,4 @@ var lengthOfLongestSubstring = function(s) {
     return maxLen == Number.MIN_SAFE_INTEGER ? 0: maxLen;
 };
 
-console.log(lengthOfLongestSubstring(""));
+console.log(lengthOfLongestSubstring("pwwkew"));
