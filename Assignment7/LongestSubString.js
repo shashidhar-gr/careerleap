@@ -10,15 +10,11 @@ var lengthOfLongestSubstring = function(s) {
     
     let charSet = new Set(), maxLen = Number.MIN_SAFE_INTEGER, res = [];
     
-    let left = 0;
-    for(let right = 0; right < s.length; right++) {
-        let c = s[right];
+    let left = 0, right = 0;
+
+    for(let c of s) {
         
-        if(charSet.has(c)) {
-            while(s[left] != c) {
-                charSet.delete(s[left]);
-                left++;
-            }
+        while(charSet.has(c)) {
             charSet.delete(s[left]);
             left++;
         }
@@ -30,9 +26,11 @@ var lengthOfLongestSubstring = function(s) {
             res = [];
             res = [left, right];
         }
+
+        right++;
     }
 
     return maxLen == Number.MIN_SAFE_INTEGER ? 0: maxLen;
 };
 
-console.log(lengthOfLongestSubstring("pwwkew"));
+console.log(lengthOfLongestSubstring("pppp"));
