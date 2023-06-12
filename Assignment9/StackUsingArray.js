@@ -1,10 +1,14 @@
 class Stack {
     data = [];
-    index = -1;
+    index =  -1;
     capacity = 0;
 
     constructor(size) {
         this.capacity = size;
+    }
+
+    isEmpty() {
+        return (this.index == -1);
     }
 
     push(element) {
@@ -12,7 +16,7 @@ class Stack {
             throw Error("Stack is full");
         
         this.index++;
-        this.data.push(element);
+        this.data[this.index] = element;
     }
 
     pop() {
@@ -22,24 +26,30 @@ class Stack {
         return this.data[this.index--];
     }
 
+    peek() {
+        if(this.index > -1) {
+            return this.data[this.index];
+        }
+        return null;
+    }
+
     getLength() {
         return this.index + 1;
     }
 }
 
-let stack = new Stack(2);
+let stack = new Stack(100);
 stack.push(10);
-console.log(stack.getLength());
 stack.push(20);
-console.log(stack.getLength());
 stack.push(30);
-console.log(stack.pop());
-console.log(stack.getLength());
-console.log(stack.pop());
-console.log(stack.getLength());
-try {
-    stack.pop();
-}
-catch(err) {
-    console.log(err);
-}
+stack.push(40);
+stack.push(50);
+
+stack.pop();
+stack.pop();
+stack.pop();
+stack.pop();
+stack.pop();
+
+stack.push(60);
+
