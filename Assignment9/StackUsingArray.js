@@ -26,14 +26,14 @@ class Stack {
         return this.data[this.index--];
     }
 
-    peek() {
+    top() {
         if(this.index > -1) {
             return this.data[this.index];
         }
         return null;
     }
 
-    getLength() {
+    size() {
         return this.index + 1;
     }
 }

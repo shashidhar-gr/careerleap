@@ -42,6 +42,10 @@ class MyQueue {
         this.tail = this.tail % this.capacity;
         return null;
     }
+
+    size() {
+        return Math.abs(this.tail - this.head);
+    }
 }
 
 let queue = new Queue(5);
