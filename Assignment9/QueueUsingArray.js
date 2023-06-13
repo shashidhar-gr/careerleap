@@ -1,4 +1,4 @@
-class Queue {
+class MyQueue {
     data = {};
     head = 0;
     tail = 0;
@@ -6,6 +6,21 @@ class Queue {
 
     constructor(size) {
         this.capacity = size;
+    }
+
+    isEmpty() {
+        if(this.head == this.tail)
+            return true;
+        
+        return false;
+    }
+
+    peek() {
+        if(this.head != this.tail) {
+            return this.data[this.head];
+        }
+
+        return null;
     }
 
     dequeue() {
@@ -25,6 +40,7 @@ class Queue {
         this.data[this.tail] = element;
         this.tail++;
         this.tail = this.tail % this.capacity;
+        return null;
     }
 }
 
