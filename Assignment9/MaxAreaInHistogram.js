@@ -4,13 +4,25 @@
  * @param {number[]} heights
  * @return {number}
  */
+const nextSmallerElement = require("./NextSmallerElement");
+const pastSmallerElement = require("./PastSmallerElement");
 
 var largestRectangleArea = function(heights) {
+    let nextSmall = nextSmallerElement(heights);
+    let pastSmall = pastSmallerElement(heights);
 
+    let maxArea = 0;
+    for(let i = 0; i < heights.length; i++) {
+        let width = Math.abs(Math.abs(nextSmall[i] - pastSmall[i]) - 1);
+        let area = width * heights[i];
+        maxArea = Math.max(area, maxArea);
+    }
+
+    return maxArea;
 }
 
 // Brute force solution.
-var largestRectangleArea = function(heights) {
+/*var largestRectangleArea = function(heights) {
     let maxArea = 0;
 
     for(let i = 0; i < heights.length; i++) {
@@ -41,7 +53,7 @@ var largestRectangleArea = function(heights) {
     }
     
     return maxArea;
-};
+}; */
 
-const arr = [0];
+const arr = [2,1,5,6,2,3];
 console.log(largestRectangleArea(arr));

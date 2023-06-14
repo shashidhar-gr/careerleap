@@ -58,5 +58,4 @@ var nextSmallerElement = function(nums) {
     return res;
 }
 
-const arr = [2, 1, 5, 6, 2, 3];
-console.log(nextSmallerElement(arr));
+module.exports = nextSmallerElement;

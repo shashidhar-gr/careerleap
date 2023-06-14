@@ -36,7 +36,7 @@ var pastSmallerElement = function(nums) {
     let res = new Array();
     let stack = new Stack();
 
-    stack.push({"value": nums[nums.length - 1], "index": - 1});
+    stack.push({"value": nums[0], "index": 0});
     res[0] = -1;
 
     for(let i = 1; i < nums.length; i++) {
@@ -58,5 +58,4 @@ var pastSmallerElement = function(nums) {
     return res;
 }
 
-const arr = [2, 1, 5, 6, 2, 3];
-console.log(pastSmallerElement(arr));
+module.exports = pastSmallerElement;
