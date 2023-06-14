@@ -30,8 +30,8 @@ var largestRectangleArea = function(heights) {
         }
 
         rightWidth = rightWidth * heights[i];
-        let totalWidth = 0;
         
+        let totalWidth = 0;
         if(leftWidth == 0 && rightWidth == 0)
             totalWidth = heights[i];
         else

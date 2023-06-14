@@ -81,7 +81,7 @@ class Stack {
 }
 
 //const arr = [1, 5, 8, 3, 7, 11];
-const nums1 = [2,4];
-const nums2 = [1,2,3,4];
+const nums1 = [1, 5, 8, 3, 7, 11];
+const nums2 = [1, 5, 8, 3, 7, 11];
 const res = nextGreaterElement(nums1, nums2);
 console.log(res);
