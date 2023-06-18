@@ -4,76 +4,19 @@
  * @param {number[]} nums
  * @return {number[]}
  */
-
-class Stack {
-    data = [];
-    index = -1;
-
-    push(val) {
-        this.index++;
-        this.data[this.index] = val;
-        return null;
-    }
-
-    pop() {
-        if(this.index == -1)
-            return null;
-        
-        let val = this.data[this.index];
-        this.index--;
-        return val;
-    }
-
-    isEmpty() {
-        if(this.index == -1)
-            return true;
-        
-        return false;
-    }
-
-    top() {
-        if(this.index == -1)
-            return null;
-        
-        return this.data[this.index];
-    }
-}
-
 var nextGreaterElements = function(nums) {
-    let stack = new Stack();
-    let res = [];
+    let stack = [], res = new Array(nums.length).fill(-1);
+
+    for(let j = 0; j < 2; j++) {
+        for(let i = 0; i < nums.length; i++) {
+            while(stack.length && nums[stack.at(-1)] < nums[i]) {
+                res[stack.pop()] = i;
+            }
+            stack.push(i);
+        }
+    }
     
-    for(let i = nums.length-1; i >= 0; i--) {
-        while(stack.isEmpty() == false & stack.top() <= nums[i]) {
-            stack.pop();
-        }
-
-        if(stack.isEmpty() == true) {
-            res[i] = -1;
-        }
-        else {
-            res[i] = stack.top();
-        }
-
-        stack.push(nums[i]);
-    }
-
-    for(let i = nums.length-1; i >= 0; i--) {
-        while(stack.isEmpty() == false & stack.top() <= nums[i]) {
-            stack.pop();
-        }
-
-        if(stack.isEmpty() == true) {
-            res[i] = -1;
-        }
-        else {
-            res[i] = stack.top();
-        }
-
-        stack.push(nums[i]);
-    }
-
-    return res;
+    return res.map(index => index == -1 ? -1: nums[index]);
 }
 
 // Bruteforce solution.
