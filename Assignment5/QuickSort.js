@@ -39,5 +39,6 @@ var partition = function(nums, start, end) {
     return writer - 1;
 }
 
-const arr = [2, 2, 2, 2, 2, 1, 10, 11, 3, 4, 2, 2, 2, 2, 2, 2];
+//const arr = [2, 2, 2, 2, 2, 1, 10, 11, 3, 4, 2, 2, 2, 2, 2, 2];
+const arr = [3, 2, 11, 0, 5];
 console.log(sort(arr));
